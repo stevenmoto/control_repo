@@ -3,7 +3,7 @@ class minecraft (
   $install_dir = '/opt/minecraft'
   ){
     file {$install_dir:
-    ensure => directory,
+      ensure => directory,
   }
   file {"${install_dir}/opt/minecraft/minecraft_server.jar":
     ensure => file,
@@ -21,7 +21,7 @@ class minecraft (
     ensure => file,
     content => epp('minecraft/minecraft.service',{
       install_dir => $install_dir,
-    })
+    }),
   }
   service {'minecraft':
     ensure => running,
